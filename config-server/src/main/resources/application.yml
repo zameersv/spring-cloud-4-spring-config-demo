@@ -1,17 +1,29 @@
 spring:
+  application:
+    name: config-server
   profiles:
     active:
-      - native
+      - git
   cloud:
     config:
       server:
         accept-empty: false
         git:
-          uri: https://github.com/zameersv/{application}
+          uri: https://github.com/zameersv/config-repo
+          search-paths:
+            - '{application}'
           skip-ssl-validation: true
           timeout: 10
           force-pull: true
-          basedir: git-repo
+          #Use baseDir for real time projects - otherwise /tmp folder will be used by default
+          #basedir: /Users/zameer/git-config-repo
           clone-on-start: true
 server:
   port: 8081
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"

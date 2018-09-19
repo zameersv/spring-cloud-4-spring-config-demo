@@ -1,6 +1,6 @@
 spring:
   application:
-    name: cofing-client
+    name: config-client
   cloud:
     config:
       uri: http://localhost:8081
@@ -8,4 +8,6 @@ spring:
       retry:
         max-attempts: 50
         max-interval: 10000
-
+  profiles:
+    active:
+      - uat
