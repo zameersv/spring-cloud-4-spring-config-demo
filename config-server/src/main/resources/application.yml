@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active:
+      - native
+  cloud:
+    config:
+      server:
+        accept-empty: false
+        git:
+          uri: https://github.com/zameersv/{application}
+          skip-ssl-validation: true
+          timeout: 10
+          force-pull: true
+          basedir: git-repo
+          clone-on-start: true
+server:
+  port: 8081
